@@ -1,11 +1,21 @@
 import json
 
 # dobble generator:
+# case 1- 
+# num of cards: 31
+# num of symbols: 31
+# num of symbols in card: 6
+# generates dobble game by sequens of 0,1,3,10,14,26 rotated num_of_symbols times
+
+# case 2- 
 # num of cards: 57
 # num of symbols: 57
-num_of_symbols = 57
-sequenced_list = [0, 1, 3, 13, 32, 36, 43, 52]
+# num of symbols in card: 8
 # generates dobble game by sequens of 0,1,3,13,32,36,43,52 rotated num_of_symbols times
+
+num_of_symbols = 57
+num_of_symbols_in_card = 8
+sequenced_list = [0,1,3,13,32,36,43,52]
 
 
 def init_list_of_objects(size):
@@ -16,6 +26,7 @@ def init_list_of_objects(size):
 
 # input: list of which indices (cards) to put the next symbol on
 # increase the value of each index by 1, when past the max value (56), it make it zero
+# as if they were indexes on a circle of 57 nodes
 def rotate_right(sequence_list):
     global num_of_symbols
     for i in range(len(sequence_list)):
@@ -62,7 +73,7 @@ def is_num_of_matches_okay(card1, card2):
 # do: validate if all cards obey the rules (1 same symbol between each pair of cards), and each cards has 8 symbols
 # returns True in case of obeying the rules, otherwise False
 def validate_game(cards):
-    num_of_symbols_in_card = 8
+    global num_of_symbols_in_card
     for card in cards:
         actual_num_of_symbols, is_rule1_fine = is_num_of_symbols_okay(card, num_of_symbols_in_card)
         if not is_rule1_fine:
