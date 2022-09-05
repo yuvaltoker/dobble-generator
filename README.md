@@ -10,12 +10,12 @@ You're more than welcome to change back the numbers into pictures (i've got some
 
 Want to try?
 
-'''bash
+```bash
 git clone https://github.com/yuvaltoker/dobble-generator.git
 
 cd dobble-generator
 
 python3 make-grid.py
-'''
+```
 
 Enjoy :)
