@@ -1,12 +1,24 @@
 import json
 
-# dobble generator:
+'''
+dobble generator -
+choose the size of the deck of cards:
+(uncomment the chosen case)
+'''
+
+'''
 # case 1- 
 # num of cards: 31
 # num of symbols: 31
 # num of symbols in card: 6
 # generates dobble game by sequens of 0,1,3,10,14,26 rotated num_of_symbols times
 
+num_of_symbols = 31
+num_of_symbols_in_card = 6
+sequenced_list = [0,1,3,10,14,26]
+'''
+
+'''
 # case 2- 
 # num of cards: 57
 # num of symbols: 57
@@ -16,6 +28,7 @@ import json
 num_of_symbols = 57
 num_of_symbols_in_card = 8
 sequenced_list = [0,1,3,13,32,36,43,52]
+'''
 
 
 def init_list_of_objects(size):
@@ -26,7 +39,7 @@ def init_list_of_objects(size):
 
 # input: list of which indices (cards) to put the next symbol on
 # increase the value of each index by 1, when past the max value (56), it make it zero
-# as if they were indexes on a circle of 57 nodes
+# as if they were indices on a circle of 57 nodes
 def rotate_right(sequence_list):
     global num_of_symbols
     for i in range(len(sequence_list)):
@@ -94,16 +107,18 @@ def validate_game(cards):
             
 
 def main():
-    global num_of_symbols
-    numbers_list = [x for x in range(num_of_symbols)] 
-    cards = makeGrid(numbers_list)
-    json_cards = json.dumps(cards)
-    for sub_list in cards:
-        print(sub_list)
-    print(len(cards))
-    if validate_game(cards):
-        print("cards obey the rules :)")
-
+    try:
+        global num_of_symbols
+        numbers_list = [x for x in range(num_of_symbols)] 
+        cards = makeGrid(numbers_list)
+        json_cards = json.dumps(cards)
+        for sub_list in cards:
+            print(sub_list)
+        print(f"A total of {len(cards)} cards")
+        if validate_game(cards):
+            print("cards obey the rules :)")
+    except NameError:
+        print(f"NameError, make sure to uncomment chosen case (see first lines of @make-grid.py)")
 
 if __name__ == "__main__":
     main()
